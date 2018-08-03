@@ -46,12 +46,13 @@ $(document).ready(function () {
 
     //Start button
     $(".start-button").on("click", function () {
+        questionIndex = 0;
         $(".hide-button").hide();
         $(".time-div").show();
-        $(".question-div").show();
-        $(".answer-div").show();
         addQuestion();
         addAnswers();
+        $(".question-div").show();
+        $(".answer-div").show();
         timer();
     })
 
@@ -73,9 +74,11 @@ $(document).ready(function () {
     };
 
     function isGameOver() {
-        if (questionIndex === (triviaQuestions.length)) {
-            gameIsOver = true;
-            questionIndex === 0;
+        questionIndex++;
+        console.log("Question number: " + questionIndex);
+
+        if (questionIndex === triviaQuestions.length) {
+            gameIsOver === true;
             console.log("GAME OVER");
             $(".time-div").hide();
             $(".answer-div").hide();
@@ -91,91 +94,89 @@ $(document).ready(function () {
                 "Unanswered: " + unansweredTracker +
                 "</p>"
             );
-        };
-    }
-
-    function nextQuestion() {
-        questionIndex++;
-        console.log("Question number: " + questionIndex);
-        isGameOver();
-
-        if (gameIsOver === false) {
-        addQuestion();
-        addAnswers();
-        timer();
-        };
-    };
-
-    function incorrect() {
-        $(".time-div").hide();
-        $(".answer-div").hide();
-        $(".question-div").html(
-            "<p> Wrong answer!" +
-            "<p> The correct answer was: " + triviaQuestions[questionIndex].c + "</p>" +
-            "<img src='" + triviaQuestions[questionIndex].img + "' alt='LOSER' class='img-fluid'>"
-        );
-
-        incorrectCount = 3;
-        incorrectCounter = setInterval(incorrectTimer, 1000);
-        function incorrectTimer() {
-            incorrectCount--;
-            if (incorrectCount === 0) {
-                clearInterval(incorrectCounter);
-                nextQuestion();
-            }
-            console.log("Next question in: " + incorrectCount);
-        };
-    };
-
-    function timer() {
-        timeCount = 30;
-        counter = setInterval(timerCount, 1000);
-        $(".time-div").text("Time remaining: " + timeCount);
-        function timerCount() {
-            timeCount--;
-            if (timeCount === 0) {
-                unansweredTracker++;
-                clearInterval(counter);
-                incorrect();
-            }
-            $(".time-div").text("Time remaining: " + timeCount);
-            console.log(timeCount);
-        };
-
-    };
-
-    //On Click Events
-    $(".answer-button").on("click", function () {
-        var userChoice = $(this).text();
-        clearInterval(counter);
-        if (userChoice === triviaQuestions[questionIndex].c) {
-
-            correctTracker++;
-
-            $(".time-div").hide();
-            $(".answer-div").hide();
-            $(".question-div").html(
-                "<p> Correct!" +
-                "<br>" +
-                "<img src='https://media0.giphy.com/media/rTg5MCCGlpvMs/200.webp' alt='LOSER' class='img-fluid'>"
-            );
-
-            correctCount = 2;
-            correctCounter = setInterval(correctTimer, 1000);
-
-            function correctTimer() {
-                correctCount--;
-                if (correctCount === 0) {
-                    clearInterval(correctCounter);
-                    nextQuestion();
-                };
-                console.log("Next question in: " + correctCount);
-            };
         }
 
         else {
-            incorrectTracker++;
+            gameIsOver === false;
+            addQuestion();
+            addAnswers();
+            timer();
+        };
+        
+        console.log(gameIsOver);
+    };
+
+
+function incorrect() {
+    $(".time-div").hide();
+    $(".answer-div").hide();
+    $(".question-div").html(
+        "<p> Wrong answer!" +
+        "<p> The correct answer was: " + triviaQuestions[questionIndex].c + "</p>" +
+        "<img src='" + triviaQuestions[questionIndex].img + "' alt='LOSER' class='img-fluid'>"
+    );
+
+    incorrectCount = 3;
+    incorrectCounter = setInterval(incorrectTimer, 1000);
+    function incorrectTimer() {
+        incorrectCount--;
+        if (incorrectCount === 0) {
+            clearInterval(incorrectCounter);
+            isGameOver();
+        }
+        console.log("Next question in: " + incorrectCount);
+    };
+};
+
+function timer() {
+    timeCount = 30;
+    counter = setInterval(timerCount, 1000);
+    $(".time-div").text("Time remaining: " + timeCount);
+    function timerCount() {
+        timeCount--;
+        if (timeCount === 0) {
+            unansweredTracker++;
+            clearInterval(counter);
             incorrect();
         }
-    });
+        $(".time-div").text("Time remaining: " + timeCount);
+        console.log(timeCount);
+    };
+
+};
+
+//On Click Events
+$(".answer-button").on("click", function () {
+    var userChoice = $(this).text();
+    clearInterval(counter);
+    if (userChoice === triviaQuestions[questionIndex].c) {
+
+        correctTracker++;
+
+        $(".time-div").hide();
+        $(".answer-div").hide();
+        $(".question-div").html(
+            "<p> Correct!" +
+            "<br>" +
+            "<img src='https://media0.giphy.com/media/rTg5MCCGlpvMs/200.webp' alt='LOSER' class='img-fluid'>"
+        );
+
+        correctCount = 2;
+        correctCounter = setInterval(correctTimer, 1000);
+
+        function correctTimer() {
+            correctCount--;
+            if (correctCount === 0) {
+                clearInterval(correctCounter);
+                isGameOver();
+            };
+            console.log("Next question in: " + correctCount);
+        };
+    }
+
+    else {
+        incorrectTracker++;
+        incorrect();
+    }
+});
 });
