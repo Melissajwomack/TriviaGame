@@ -1,8 +1,8 @@
-# Trivia Game
+# Biology Trivia Game
 
 ## About the Game:
 
-This game is a simple trivia game made using javascript and jQuery. 
+This game is a simple trivia game about biology made using javascript and jQuery. 
 
 ## How to Play:
 
