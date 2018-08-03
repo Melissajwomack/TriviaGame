@@ -164,7 +164,7 @@ $(document).ready(function () {
             $(".answer-div").hide();
             $(".question-div").html(
                 "<h2 class='text-danger'> Correct!" + "</h2>" +
-                "<img src='https://media0.giphy.com/media/rTg5MCCGlpvMs/200.webp' alt='Correct' class='img-fluid'>"
+                "<img src='https://media0.giphy.com/media/rTg5MCCGlpvMs/200.webp' alt='CORRECT' class='img-fluid'>"
             );
 
             //Timer for correct display
