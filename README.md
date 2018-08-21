@@ -6,7 +6,7 @@ This game is a simple trivia game about biology made using javascript and jQuery
 
 ## How to Play:
 
-* Click the microscrope: [:microscope:](https://melissajwomack.github.io/TriviaGame/)
+* Click Here: https://melissajwomack.github.io/TriviaGame/
 * Press the start button to start the game
 * Choose an answer
 * If the player choses the correct answer, the game will let player know and then go to the next question
