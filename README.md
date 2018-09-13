@@ -1,4 +1,4 @@
-# Biology Trivia Game
+# Science Trivia Game
 
 ## About the Game:
 
