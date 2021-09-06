@@ -28,7 +28,7 @@ $(document).ready(function () {
 
         { q: "What was the name given to the sheep that was the first mammal cloned from an adult cell?", a: ["Lucy", "Sally", "Martha", "Dolly"], c: "Dolly", img: "https://media2.giphy.com/media/z5u3Hddn4P45O/200.webp" },
 
-        { q: "How many pairs of chromosomes are in found in the average human?", a: ["23", "26", "13", "46"], c: "23", img: "https://media3.giphy.com/media/FO4fycHyNImLm/200w.webp" },
+        { q: "How many pairs of chromosomes are found in the average human?", a: ["23", "26", "13", "46"], c: "23", img: "https://media3.giphy.com/media/FO4fycHyNImLm/200w.webp" },
 
         { q: "What does the acronym DNA stand for?", a: ["deoxynucleic acid", "dioxyribonucleic acid", "deoxyribonucleic acid", "dioxynucleic acid"], c: "deoxyribonucleic acid", img: "https://media3.giphy.com/media/SJX3gbZ2dbaEhU92Pu/200w.webp" },
 
